@@ -3,20 +3,28 @@
 using namespace std;
 
 //logic for finding prime number using recursion
-bool isPrime(int x)
+bool isPrime(int x,int i=2)
 {
-	if(x==1)
+	if(x<=2)
 	{
-		return false;
-	}
-	for(int i=2;i*i<=x;i++)
-	{
-		if(x%i==0)
+		if(x==2)
+		{
+			return true;
+		}
+		else
 		{
 			return false;
 		}
 	}
-	return true;
+	if(x%i==0)
+	{
+		return false;
+	}
+	if(i*i>x)
+	{
+	    return true;
+    }
+    isPrime(x,i+1);
 }
 
 int main()
@@ -25,7 +33,7 @@ int main()
 	int n;
 	cout<<"Enter a number:"<<"\n";
 	cin>>n;
-	cout<<isPrime(n);
+	cout<<isPrime(n,2);
 	cout<<"\n";
 	
 	//logic using iteration 
